@@ -1,1 +1,35 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Password Protection</h1>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <p>Please enter the password to proceed:</p>
+            <input type="password" id="password" class="w-full p-2 border rounded" placeholder="Enter password">
+            <button id="validatePassword" class="bg-blue-500 text-white p-2 rounded mt-4">Submit</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('validatePassword').addEventListener('click', function () {
+            const password = document.getElementById('password').value;
+            fetch('/validate_password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `password=${password}`
+            }).then(response => response.json()).then(data => {
+                if (data.status === 'success') {
+                    alert('Access granted!');
+                } else {
+                    alert('Invalid password!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
