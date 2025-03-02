@@ -10,4 +10,4 @@ A Flask-based tool for dynamic redirection with features like:
 ## How to Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/redirection-tool.git
+   git clone https://github.com/emilyybetty/3-port-modual.git
